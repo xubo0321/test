@@ -1,0 +1,56 @@
+####
+2020.09.18 12:15
+####
+
+(pymongodb) [xubo@LAPTOP-NS9T2NBE ~]$ cd /usr/local/mongodb4/bin/
+(pymongodb) [xubo@LAPTOP-NS9T2NBE bin]$ ./mongo 192.168.20.162:27017
+MongoDB shell version v4.4.1
+connecting to: mongodb://192.168.20.162:27017/test?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("eaa94017-b7f2-48c6-8520-20e61ebe152c") }
+MongoDB server version: 4.0.16
+WARNING: shell and server versions do not match
+---
+The server generated these startup warnings when booting: 
+2020-09-01T13:46:52.583+0800 I CONTROL  [initandlisten] 
+2020-09-01T13:46:52.583+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2020-09-01T13:46:52.583+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2020-09-01T13:46:52.583+0800 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2020-09-01T13:46:52.583+0800 I CONTROL  [initandlisten] 
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] 
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] 
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2020-09-01T13:46:52.584+0800 I CONTROL  [initandlisten] 
+2020-09-01T13:46:59.190+0800 I REPL     [replexec-0] 
+2020-09-01T13:46:59.190+0800 I REPL     [replexec-0] ** WARNING: This replica set uses arbiters, but readConcern:majority is enabled 
+2020-09-01T13:46:59.190+0800 I REPL     [replexec-0] **          for this node. This is not a recommended configuration. Please see 
+2020-09-01T13:46:59.190+0800 I REPL     [replexec-0] **          https://dochub.mongodb.org/core/psa-disable-rc-majority-4.0
+2020-09-01T13:46:59.190+0800 I REPL     [replexec-0] 
+---
+m_rp:PRIMARY> show dbs
+admin          0.000GB
+config         0.000GB
+local          3.988GB
+mdb_dcls     289.851GB
+opetate_log    0.000GB
+m_rp:PRIMARY> use admin
+switched to db admin
+m_rp:PRIMARY> show collections
+system.keys
+system.users
+system.version
+m_rp:PRIMARY> db.system.keys.find()
+{ "_id" : NumberLong("6802124068146380801"), "purpose" : "HMAC", "key" : BinData(0,"XU6OMmTiikKW/hNQM+T04ysJYxw="), "expiresAt" : Timestamp(1591518925, 0) }
+{ "_id" : NumberLong("6802124068146380802"), "purpose" : "HMAC", "key" : BinData(0,"fM2BMwmjnGod4otDdLH6Q7L9Bk8="), "expiresAt" : Timestamp(1599294925, 0) }
+{ "_id" : NumberLong("6850472656731373574"), "purpose" : "HMAC", "key" : BinData(0,"Yxn1vf5SwfkJEJMtu/S+RHTEct4="), "expiresAt" : Timestamp(1607070925, 0) }
+m_rp:PRIMARY> db.system.users.find()
+{ "_id" : "admin.root", "userId" : UUID("0d8e366d-8b05-4014-aa2a-84f63f87a884"), "user" : "root", "db" : "admin", "credentials" : { "SCRAM-SHA-1" : { "iterationCount" : 10000, "salt" : "83YxekpYql7Cm7fzLfMjOA==", "storedKey" : "KCB3peRR5D5YIn68QcEX+/0hGGQ=", "serverKey" : "jb5s4wW8LnXe9iovVISlQ3NaH7A=" }, "SCRAM-SHA-256" : { "iterationCount" : 15000, "salt" : "gs68c8FLFHQF0oC0mQqTLY0gCY0X/7SQhBk6UQ==", "storedKey" : "7bhJCufGyzuL3CnJZ6MyNZzDBqfmwBThUVNO0J4W+40=", "serverKey" : "tLEy2UQ32TgzeMnfUDwSv6k6Hla3z2c/QK0L75TDJ6U=" } }, "roles" : [ { "role" : "root", "db" : "admin" } ] }
+{ "_id" : "mdb_dcls.sys", "userId" : UUID("a4a2db7d-0a84-4f3f-b7cd-226085b1b4e5"), "user" : "sys", "db" : "mdb_dcls", "credentials" : { "SCRAM-SHA-1" : { "iterationCount" : 10000, "salt" : "uMhk4/TOogUwhU/XG/NvDQ==", "storedKey" : "nSkk6ZG4xS8PVVpThBNFxg51Nu8=", "serverKey" : "9/kSiVWcQpt4bEQZTFXIPcmTTBU=" }, "SCRAM-SHA-256" : { "iterationCount" : 15000, "salt" : "0Af0z/VcFmBWCN/ZmxG7Qu/hnVvYIWksam5agg==", "storedKey" : "yW32MkfVqc2up99172TActFCeNQCMyu9cAlIj9pptd4=", "serverKey" : "/CVRDnTa4/SOT2X1tgnNoYrSfKSTlsBCa89wsNLoJoA=" } }, "roles" : [ { "role" : "dbAdmin", "db" : "mdb_dcls" }, { "role" : "dbOwner", "db" : "mdb_dcls" }, { "role" : "enableSharding", "db" : "mdb_dcls" }, { "role" : "read", "db" : "mdb_dcls" }, { "role" : "readWrite", "db" : "mdb_dcls" }, { "role" : "userAdmin", "db" : "mdb_dcls" } ] }
+{ "_id" : "MongoTest.dcls", "userId" : UUID("1425832f-ab00-4a38-b2a5-e637a0a3c102"), "user" : "dcls", "db" : "MongoTest", "credentials" : { "SCRAM-SHA-1" : { "iterationCount" : 10000, "salt" : "qMUNwCxTdNWHWwWm/XbnZQ==", "storedKey" : "t+mmYhh+mXs32WH9Rf3B+7mm9s4=", "serverKey" : "G6Z5r7nTPYyFsTFWi6RJ0XKRCdI=" }, "SCRAM-SHA-256" : { "iterationCount" : 15000, "salt" : "Da6AMPzqS857ZFDsVbItnzpzj+ak/QlIb+mR9w==", "storedKey" : "drQ6U9Bz9pFG0ZEkm4/+/S04mosoBEUhRUJzpypw+GQ=", "serverKey" : "Mx41En5K7+LBvO/E2fcqyrfZTe67O+sklxUuut+4FQE=" } }, "roles" : [ { "role" : "dbOwner", "db" : "mdb_dcls" }, { "role" : "dbAdmin", "db" : "mdb_dcls" }, { "role" : "enableSharding", "db" : "mdb_dcls" }, { "role" : "read", "db" : "mdb_dcls" }, { "role" : "readWrite", "db" : "mdb_dcls" }, { "role" : "userAdmin", "db" : "mdb_dcls" } ] }
+m_rp:PRIMARY> db.system.version.find()
+{ "_id" : "featureCompatibilityVersion", "version" : "4.0" }
+{ "_id" : "authSchema", "currentVersion" : 5 }
+m_rp:PRIMARY> 
+
